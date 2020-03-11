@@ -2,8 +2,8 @@ from app.model.Company import Company
 
 
 def main():
-    company = Company('name', 'add name')
-    print(company)
+    company = Company('XCompanyX')
+    print(company.name)
 
 
 main()
