@@ -15,19 +15,19 @@ class Main:
                 local_string = text.split(': ')
 
                 if local_string[:1] == ['Название']:
-                    self.company.name = local_string[1:]
+                    self.company.name = ''.join(local_string[1:])
                 elif local_string[:1] == ['Сайт']:
-                    self.company.site = local_string[1:]
+                    self.company.site = ''.join(local_string[1:])
                 elif local_string[:1] == ['email']:
-                    self.company.email = local_string[1:]
+                    self.company.email = ''.join(local_string[1:])
                 elif local_string[:1] == ['телефон']:
-                    self.company.phone = local_string[1:]
+                    self.company.phone = ''.join(local_string[1:])
                 elif local_string[:1] == ['адрес']:
-                    self.company.address = local_string[1:]
+                    self.company.address = ''.join(local_string[1:])
                 elif local_string[:1] == ['комментарий']:
-                    self.company.comment = local_string[1:]
+                    self.company.comment = ''.join(local_string[1:])
                 elif local_string[:1] == ['ответственный сотрудник']:
-                    self.company.observer_ids = local_string[1:]
+                    self.company.observer_ids = ''.join(local_string[1:])
 
         except Exception as ex:
             write_log(ex)
@@ -41,4 +41,4 @@ if __name__ == "__main__":
     m = Main()
     m.file_extract()
 
-    print(str(m.company.name), '\n', m.company.observer_ids, '\n', m.company.phone)
+    print(m.company.name, m.company.observer_ids, m.company.phone)
