@@ -1,6 +1,7 @@
-from app.model.Company import Company
+from app.model.company import Company
 from docx import Document
 import json
+from _datetime import datetime
 
 
 class Main:
@@ -33,8 +34,11 @@ class Main:
             write_log(ex)
 
 
-def write_log(exception):
-    print(exception)
+def write_log(*args):
+    with open('log.txt', 'a') as log_file:
+        date = datetime.strftime(datetime.now(), '%d.%m.%Y %H:%M:%S')
+        error = str(f'{date} {args}')
+        log_file.write(error)
 
 
 if __name__ == "__main__":
