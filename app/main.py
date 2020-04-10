@@ -10,7 +10,7 @@ class Main:
 
     def file_extract(self):
         try:
-            doc = Document('C:/Users/kav1302/PycharmProjects/cpsupport/test.DOCX')
+            doc = Document('test.docx')
             for p in doc.paragraphs:
                 text = p.text
                 local_string = text.split(': ')
@@ -38,7 +38,7 @@ def write_log(*args):
     with open('log.txt', 'a') as log_file:
         date = datetime.strftime(datetime.now(), '%d.%m.%Y %H:%M:%S')
         error = str(f'{date} {args}')
-        log_file.write(error)
+        log_file.write(error + '\n')
 
 
 if __name__ == "__main__":
