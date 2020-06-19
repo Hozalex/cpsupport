@@ -1,4 +1,5 @@
 from app.model.company import Company
+from app.model.rest import Rest
 from docx import Document
 import json
 from _datetime import datetime
@@ -7,6 +8,7 @@ from _datetime import datetime
 class Main:
     def __init__(self):
         self.company = Company('')
+        self.rest = Rest()
 
     def file_extract(self):
         try:
@@ -29,7 +31,6 @@ class Main:
                     self.company.comment = ''.join(local_string[1:])
                 elif local_string[:1] == ['ответственный сотрудник']:
                     self.company.observer_ids = ''.join(local_string[1:])
-
         except Exception as ex:
             write_log(ex)
 
@@ -44,5 +45,5 @@ def write_log(*args):
 if __name__ == "__main__":
     m = Main()
     m.file_extract()
-
+    print(m.rest.get())
     print(m.company.name, m.company.observer_ids, m.company.phone)
