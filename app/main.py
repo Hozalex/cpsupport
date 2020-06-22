@@ -45,5 +45,7 @@ def write_log(*args):
 if __name__ == "__main__":
     m = Main()
     m.file_extract()
+
     print(m.rest.get())
+    # m.rest.post()
     print(m.company.name, m.company.observer_ids, m.company.phone)
