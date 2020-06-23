@@ -3,7 +3,7 @@ import json
 import requests
 
 
-class Rest(ApiService):
+class Rest:
     url = 'https://sd.cpsupport.ru'
     issues = '/api/v1/issues/120/attachments/656945'
     company = '/api/v1/companies/'
