@@ -1,11 +1,11 @@
 from docx import Document
-from app.model.company import Company
 from _datetime import datetime
+import json
 
 
 class Parser:
     def __init__(self):
-        self.company = Company()
+        self.d = {'name': '', 'site': '', 'email': '', 'phone': '', 'address': '', 'comment': '', 'observer_ids': ''}
 
     def file_extract(self):
         try:
@@ -15,21 +15,24 @@ class Parser:
                 local_string = text.split(': ')
 
                 if local_string[:1] == ['Название']:
-                    self.company.name = ''.join(local_string[1:])
+                    self.d['name'] = ''.join(local_string[1:])
                 elif local_string[:1] == ['Сайт']:
-                    self.company.site = ''.join(local_string[1:])
+                    self.d['site'] = ''.join(local_string[1:])
                 elif local_string[:1] == ['email']:
-                    self.company.email = ''.join(local_string[1:])
+                    self.d['email'] = ''.join(local_string[1:])
                 elif local_string[:1] == ['телефон']:
-                    self.company.phone = ''.join(local_string[1:])
+                    self.d['phone'] = ''.join(local_string[1:])
                 elif local_string[:1] == ['адрес']:
-                    self.company.address = ''.join(local_string[1:])
+                    self.d['address'] = ''.join(local_string[1:])
                 elif local_string[:1] == ['комментарий']:
-                    self.company.comment = ''.join(local_string[1:])
+                    self.d['comment'] = ''.join(local_string[1:])
                 elif local_string[:1] == ['ответственный сотрудник']:
-                    self.company.observer_ids = ''.join(local_string[1:])
+                    self.d['observer_ids'] = ''.join(local_string[1:])
+
         except Exception as ex:
             write_log(ex)
+
+        return json.dumps(self.d, ensure_ascii=False)
 
 
 def write_log(*args):
